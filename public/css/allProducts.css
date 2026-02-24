@@ -100,7 +100,7 @@ input:focus{
 .product-grid{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 37px;
+    gap: 38px;
     padding-top: 20px;
     padding-bottom: var(--space-l);
 }
@@ -146,7 +146,7 @@ input:focus{
     color: var(--clr-txt-body);
     background-color: var(--clr-bg-subcard);
     padding: var(--space-xs);
-    border-radius: 5px;
+    border-radius: 13px;
     width: auto;
 }
 #item-category,#item-stock,#item-material{

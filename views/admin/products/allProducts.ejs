@@ -40,13 +40,17 @@
                                                 <div class="product-text-info-item" id="item-name" style="background-color: white;"><span class="txt-head"><%=x.name%></span></div>
                                                 <div class="product-text-info-item" id="item-price" style="font-size: var(--space-xxl); background-color: white; color:var(--clr-txt-head); margin-top: -10px;">₹ <%=x.price%></div>
                                                 <div class="info-row">
-                                                        <div class="product-text-info-item" id = "item-category"></i><%=x.category%></div>
-                                                        <div class="product-text-info-item" id = "item-stock"></i>Stk : <%=x.stock%></div>
-                                                        <div class="product-text-info-item" id = "item-material"></i><%=x.material%></div>
-                                                        <%if(x.barcodePrintCount == 0){%>
-                                                                <i data-lucide="printer-x" class="icon" style="width: 15px; height: 15px; border: 1px solid var(--clr-border-light); border-radius: 5px; padding: 3px; background-color: rgba(163, 2, 2, 0.756); color: var(--clr-txt-inv)"></i>
+                                                        <%if(x.stock != 0){%>
+                                                                <div class="product-text-info-item" style="color: var(--pill-green-text);;background-color: var(--pill-green-bg); font-size: var(--space-ml);padding: var(--space-xs) var(--space-s);" id = "item-stock"></i>In Stock</div>
+                                                        <%}else{%>
+                                                                <div class="product-text-info-item" style=" color: var(--pill-red-text);background-color:var(--pill-red-bg);font-size: var(--space-ml);padding: var(--space-xs) var(--space-s);" id = "item-stock"></i>Out Of Stock</div>
+
+                                                                <%}%>
+
+                                                        <%if(x.barcodePrintCount == 0||x.stock == 0){%>
+                                                                <i data-lucide="printer-x" class="icon" style="stroke-width: 1.2;width: 25px; height: 25px; border: 1px solid var(--clr-border-light); border-radius: 5px; padding: 3px; background-color: var(--pill-red-bg); color: var(--pill-red-text)"></i>
                                                                 <%}else{%>
-                                                                        <i data-lucide="printer-check" class="icon" style="width: 15px; height: 15px; border: 1px solid var(--clr-border-light); border-radius: 5px; padding: 3px; background-color: rgba(50, 147, 50, 0.943); color: var(--clr-txt-inv)"></i>
+                                                                        <i data-lucide="printer-check" class="icon" style="stroke-width: 1.2;width: 25px; height: 25px; border: 1px solid var(--clr-border-light); border-radius: 5px; padding: 3px; background-color: var(--pill-green-bg); color: var(--pill-green-text)"></i>
 
                                                                         <%}%>
                                                 </div>

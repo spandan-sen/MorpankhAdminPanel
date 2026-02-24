@@ -12,18 +12,20 @@ body::-webkit-scrollbar {
     margin-left:var(--sidebar-width);
     margin-top:var(--topbar-height);
     height: 100vh;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
 
 }
 .search-group{
     display: flex;
     max-width: 100%;
     justify-content: space-between;
-    padding: var(--space-m);
+    padding: var(--space-xs);
+    align-items: center;
     border-radius: 10px;
     flex-direction: row;
     background-color: var(--clr-bg-card);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--clr-border-light);
 }
 label{
     margin-right: var(--space-xs);
@@ -45,6 +47,7 @@ label{
 .search-box{    
     border-radius: 5px;
     width: 80%; 
+
 }
 input{
     padding: var(--space-s);
@@ -52,7 +55,7 @@ input{
     border-radius: var(--rad-m);
     border: none;
     background-color: var(--clr-bg-subcard);
-    width: 92%;
+    width: 91%;
     font-size: var(--space-md);
 }
 .order-list{
