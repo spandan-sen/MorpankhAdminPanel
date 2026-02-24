@@ -105,6 +105,8 @@ label{
 .input-box{
     display: flex;
     flex-direction: row;
+    border-bottom: 1px solid var(--clr-border-light);
+    padding: var(--space-xxs);
 }
 .quantity-discount{
     display: flex;
@@ -156,6 +158,9 @@ label{
     position: relative;
     bottom: 4px;
 
+}
+.item-info-check{
+    width: 10%;
 }
 .item-info-select{
     font-family: var(--font-head);

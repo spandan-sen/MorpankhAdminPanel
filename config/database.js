@@ -172,6 +172,26 @@ const invoiceSchema = new mongoose.Schema({
     required:true
   }
 })
+const auditSchema = new mongoose.Schema({
+  actionDate:{
+    type:String,
+    required:true
+  },
+  actionUser:{
+    type:String,
+    required:true
+  },
+  actionType:{
+    type:String,
+    required:true
+  },
+  actionTarget:{
+    type:String,
+    required:true
+  }
+
+
+})
 const alertSchema = new mongoose.Schema({
   itemAddAlert:{
     type:Boolean
@@ -255,5 +275,6 @@ const tax_model = mongoose.model("tax_model",taxSchema)
 const product_model = mongoose.model("product_model",productSchema)
 const invoice_model = mongoose.model("invoice_model",invoiceSchema)
 const order_model = mongoose.model("order_model",orderSchema)
-module.exports = {connectDB,product_model,tax_model,order_model,invoice_model,draft_model,alert_model,dash_model}
+const audit_model = mongoose.model("audit_model",auditSchema)
+module.exports = {connectDB,product_model,tax_model,order_model,invoice_model,draft_model,alert_model,dash_model,audit_model}
 

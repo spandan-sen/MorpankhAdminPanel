@@ -31,6 +31,7 @@ let full_order_information = {
     data_verified : false,
     gross_sub_total : 0,
     taxable_total : 0,
+    whatsappConf : "false",
     final_total : 0,
     final_total_words : "",
     nextInvoiceNumber : 0,
@@ -257,6 +258,13 @@ order_type.addEventListener("change", recalculateAndRender);
 payment.addEventListener("change", () => {
     full_order_information.payment_info.method = payment.value;
 });
+document.querySelector("#whatsappConf").addEventListener("change",()=>{
+    if(full_order_information.whatsappConf == "false"){
+        full_order_information.whatsappConf = "true"
+    }else{
+        full_order_information.whatsappConf = "false"
+    }
+})
 
 customerMobile.addEventListener("change", () => {
     full_order_information.customer_num = customerMobile.value;

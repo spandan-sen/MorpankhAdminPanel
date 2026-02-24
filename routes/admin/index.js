@@ -71,6 +71,7 @@ router.use(requireAdmin)
 //Routers - 
 router.use("/products/edit",require("./product_show"))
 router.use("/products/add",require("./add"))
+router.use("/audit",require("./audit"))
 router.use("/products",require("./products"))
 router.use("/messages",require("./messages"))
 router.use("/users",require("./users"))

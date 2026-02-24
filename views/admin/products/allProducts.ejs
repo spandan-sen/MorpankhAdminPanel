@@ -43,6 +43,12 @@
                                                         <div class="product-text-info-item" id = "item-category"></i><%=x.category%></div>
                                                         <div class="product-text-info-item" id = "item-stock"></i>Stk : <%=x.stock%></div>
                                                         <div class="product-text-info-item" id = "item-material"></i><%=x.material%></div>
+                                                        <%if(x.barcodePrintCount == 0){%>
+                                                                <i data-lucide="printer-x" class="icon" style="width: 15px; height: 15px; border: 1px solid var(--clr-border-light); border-radius: 5px; padding: 3px; background-color: rgba(163, 2, 2, 0.756); color: var(--clr-txt-inv)"></i>
+                                                                <%}else{%>
+                                                                        <i data-lucide="printer-check" class="icon" style="width: 15px; height: 15px; border: 1px solid var(--clr-border-light); border-radius: 5px; padding: 3px; background-color: rgba(50, 147, 50, 0.943); color: var(--clr-txt-inv)"></i>
+
+                                                                        <%}%>
                                                 </div>
                                         </div>
                                 </a>

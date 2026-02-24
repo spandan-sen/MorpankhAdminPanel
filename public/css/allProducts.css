@@ -119,6 +119,7 @@ input:focus{
     text-decoration: none;
     padding-bottom: var(--space-l);
 }
+
 .info-row{
     display: flex;
     flex-direction: row;

@@ -336,12 +336,13 @@ router.get(`/generate-invoice/:order_ID`, async (req, res) => {
             filePath,
             `invoice-${req.params.order_ID}.pdf`
         )
-
-        await sendWhatsAppInvoice(
-            `91${orderData.customer_num}`,
-            orderData.customer_name,
-            Math.round(orderData.final_total)
+        if(req.session.whatsappInvoiceConf == "true"){
+            await sendWhatsAppInvoice(
+                `91${orderData.customer_num}`,
+                orderData.customer_name,
+                Math.round(orderData.final_total)
         )
+        }
 
         // NOW DELETE DRAFT (OPTION B)
         await draft_model.deleteMany({})

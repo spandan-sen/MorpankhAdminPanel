@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="/css/audit.css" rel="stylesheet">
+    <%- include("../partials/links") %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Log</title>
+</head>
+<body>
+    <script>
+                localStorage.setItem("display","<%=display%>")
+                console.log(localStorage.getItem("display"))
+    </script>
+    <script>
+            function roundTo2(num) {
+            return Math.round((num + Number.EPSILON) * 100) / 100;
+            }
+    </script>
+    <%- include("../partials/adminNav") %>
+    <div class="audit-layout">
+    </div>
+    <script src="/js/audit.js"></script>
+</body>
+</html>

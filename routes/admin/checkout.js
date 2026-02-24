@@ -15,6 +15,7 @@ router.post("/orderConfirmation/:order_id", async (req, res) => {
     try {
         await draft_model.deleteMany({})
         await draft_model.create({ orderObject: req.body })
+        req.session.whatsappInvoiceConf = req.body.whatsappConf
 
         console.log(`Draft Order Object Created for Order ID : ${req.params.order_id} `)
         console.log(`Order data received for id : ${req.params.order_id}`, req.body)

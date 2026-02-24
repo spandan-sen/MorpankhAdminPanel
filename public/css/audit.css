@@ -1,0 +1,17 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: var(--clr-bg-website);
+
+}
+.audit-layout{
+    display: flex;
+    flex-direction: column;
+    margin-left:var(--sidebar-width);
+    margin-top:var(--topbar-height);
+    width: 100% - var(--sidebar-width);
+    height: 100vh;
+    padding: 1rem;
+    min-height: fit-content;
+
+}

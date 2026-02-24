@@ -15,6 +15,10 @@
     <!-- Admin Navigation -->
     <%- include("../partials/adminNav") %>
     <div class="order-layout">
+        <%function roundTo2(num) {
+            return Math.round((num + Number.EPSILON) * 100) / 100;
+            }
+            %>
         <div class="status-group">
             <div class="form-item">
                         <label for="payment">Payment Status</label>
@@ -67,9 +71,9 @@
                         <td class="body-item" style="color:var(--clr-txt-body)"><%=x.name%></td>
                         <td class="body-item"><%=x.quantity%></td>
                         <td class="body-item">₹<%=x.unitPrice%></td>
-                        <td class="body-item">₹<%=Math.round(x.totalDiscount)%></td>
+                        <td class="body-item">₹<%=roundTo2(x.totalDiscount)%></td>
                         <td class="body-item"><%=x.hsnCode%></td>
-                        <td class="body-item">₹<%=Math.round(x.gstAmount)%></td>
+                        <td class="body-item">₹<%=roundTo2(x.gstAmount)%></td>
                         <td class="body-item" style="font-size: var(--space-l); color: var(--clr-txt-body); border-left: 1px solid var(--clr-border-medium); text-align: right; font-weight: bold;">₹<%=Math.round(x.lineTotal)%></td>
                     </tr>
                     <%}%>
@@ -99,11 +103,11 @@
                 </tr>
                 <tr>
                     <td class="summary-head" >Total GST</td>
-                    <td class="summary-item">₹<%=Math.round(orderData.summary.gstTotal)%></td>
+                    <td class="summary-item">₹<%=roundTo2(orderData.summary.gstTotal)%></td>
                 </tr>
                 <tr>
                     <td class="summary-head" >Total Taxable</td>
-                    <td class="summary-item">₹<%=Math.round(orderData.summary.taxableTotal)%></td>
+                    <td class="summary-item">₹<%=roundTo2(orderData.summary.taxableTotal)%></td>
                 </tr>
 
             </table>
