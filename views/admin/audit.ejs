@@ -36,7 +36,9 @@
                                 <%= x.actionDate.toISOString().split("T")[0] %>
                             </td>
                             <td class="item">
-                                <%= new Date(x.actionDate).toLocaleTimeString("en-IN") %>
+                                <%= new Date(x.actionDate).toLocaleTimeString("en-IN",{
+                                    timeZone:"Asia/Kolkata"
+                                }) %>
                             </td>
                             <td class="item"><%=x.actionUser%></td>
                             <td class="item"><%=x.actionType%></td>
