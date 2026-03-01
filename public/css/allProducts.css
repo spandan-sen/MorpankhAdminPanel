@@ -42,7 +42,7 @@ input{
     border-radius: var(--rad-m);
     border: none;
     background-color: var(--clr-bg-subcard);
-    width: 89%;
+    width: 85%;
     font-size: var(--space-md);
 }
 input:focus{
@@ -228,20 +228,18 @@ input:focus{
 }
 .pg-grp{
     font-family: var(--font-head);
-    padding: var(--space-l);
-    width: 96%;
-    border-top:1px solid var(--clr-border-light) ;
+    width: 20%;
     text-align: center;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: row;
-    gap: var(--space-xs);
 }
 .pg-grp-bt{
     font-size: var(--space-m);
-    padding: var(--space-s) var(--space-m);
+    padding: var(--space-xs) var(--space-xs);
+    text-align: center;
     box-shadow: var(--shadow-sm);
-    border-radius: 20px;
+    border-radius: 10px;
     transition: 0.5s;
     cursor: pointer;
 }
@@ -250,8 +248,13 @@ input:focus{
 
 }
 .page-num{
-        padding: var(--space-s) var(--space-m);
-        box-shadow: var(--shadow-md);
-        border-radius: 20px;
+        padding: var(--space-s) var(--space-s);
+        border-radius: 10px;
+        text-align: center;
 
+}
+.icon{
+    position: relative;
+    top: 3px;
+    color: var(--clr-txt-body);
 }

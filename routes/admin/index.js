@@ -168,9 +168,26 @@ router.get("/", async (req,res)=>{
             dashData.currentMonth = thisMonth
         }
 
-        // ---- Stock Counts ----
-        dashData.brandStock.total = await product_model.countDocuments()
-        dashData.brandStock.inStock = await product_model.countDocuments({stock:{$gt:0},state:"Active"})
+            // ---- Stock Counts ----
+            dashData.brandStock.total = await product_model.countDocuments({
+                state: "Active"
+                });
+            const inStockSum = await product_model.aggregate([
+                    {
+                        $match: {
+                        stock: { $gt: 0 },
+                        state: "Active"
+                        }
+                    },
+                    {
+                        $group: {
+                        _id: null,
+                        total: { $sum: "$stock" }
+                        }
+                    }
+                    ]);
+
+        dashData.brandStock.inStock = inStockSum[0]?.total || 0;
         dashData.brandStock.outStock = await product_model.countDocuments({stock:0})
 
         return res.render("admin/dashboard",{

@@ -254,7 +254,7 @@ const dashboardSchema = new mongoose.Schema({
   brandStock:{
     total:Number,
     inStock:Number,
-    outStock:Number
+    outStock:Number,
   },
   adminSeshActions:{
     message:String,
