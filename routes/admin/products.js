@@ -101,7 +101,7 @@ router.get("/allProducts", async (req, res) => {
     try {
         const search = req.query.search || "";
         let page = parseInt(req.query.page) || 1;
-        const limit = 50;
+        const limit = 40;
 
         if (page < 1) page = 1;
 
@@ -134,7 +134,7 @@ router.get("/barcodePrint",async(req,res)=>{
      try {
         const search = req.query.search || "";
         let page = parseInt(req.query.page) || 1;
-        const limit = 20;
+        const limit = 40;
 
         if (page < 1) page = 1;
 
