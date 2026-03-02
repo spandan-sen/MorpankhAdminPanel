@@ -52,6 +52,7 @@
                             <option value="sarees">Sarees</option>
                             <option value="wraps">Wraps</option>
                             <option value="homeDecor">Home Decor</option>
+                            <option value="jewellery">Jewellery</option>
                         </select>
                     </div>
 
@@ -133,15 +134,32 @@
                     </div>
                        <div class="form-item">
                             <label for="hsnCode">Product HSN Code</label>
-                            <select id="hsnCode" name="hsnCode">
-                                <option value="">Select HSN</option>
+                           <select id="hsnCode" name="hsnCode">
+
+                            <option value="">SelectHSN</option>
+
+                            <optgroup label="Textiles & Fabrics">
                                 <option value="5007">Silk [5007]</option>
                                 <option value="5208">Cotton [5208]</option>
-                                <option value="5112">Wool [5112]</option>   
+                                <option value="5112">Wool [5112]</option>
                                 <option value="5309">Linen [5309]</option>
-                                <option value="5407">Modal [5407]</option>
-                                <option value="5516">Viscoce [5516]</option>
+                                <option value="5407">Modal / Synthetic Filament Fabric [5407]</option>
+                                <option value="5516">Viscose [5516]</option>
                                 <option value="5310">Jute [5310]</option>
+                            </optgroup>
+
+                            <optgroup label="Jewellery - Precious">
+                                <option value="7113">Gold / Silver Jewellery [7113]</option>
+                                <option value="7114">Articles of Goldsmith / Silversmith [7114]</option>
+                            </optgroup>
+
+                            <optgroup label="Jewellery - Imitation & Fashion">
+                                <option value="7117">Imitation Jewellery [7117]</option>
+                            </optgroup>
+
+                            <optgroup label="Wooden Ornaments">
+                                <option value="4420">Wooden Handicraft / Ornaments [4420]</option>
+                            </optgroup>
 
                             </select>
                         </div>
@@ -1131,30 +1149,73 @@
                     <div class="form-item">
                         <label for="jewellery-type">Type of Jewellery</label>
                         <select id="jewellery-type" name="jewelleryType" required>
-                            <option value="">Select category</option>
-                            <option value="necklace">Necklace</option>
-                            <option value="earrings">Earrings</option>
-                            <option value="ring">Ring</option>
-                            <option value="bracelet">Bracelet</option>
-                            <option value="bangle">Bangle</option>
+                            <option value="">SelectCategory</option>
+
+                            <optgroup label="neck Jewellery">
+                            <option value="chainNecklace">Chain Necklace</option>
+                            <option value="pendantNecklace">Pendant Necklace</option>
+                            <option value="chokerNecklace">Choker Necklace</option>
+                            <option value="longNecklace">Long Necklace</option>
+                            </optgroup>
+
+                            <optgroup label="Ear Jewellery">
+                            <option value="studEarrings">Stud Earrings</option>
+                            <option value="hoopEarrings">Hoop Earrings</option>
+                            <option value="jhumkaEarrings">Jhumka Earrings</option>
+                            <option value="earCuffs">Ear Cuffs</option>
+                            </optgroup>
+
+                            <optgroup label="finger Jewellery">
+                            <option value="goldRing">Gold Ring</option>
+                            <option value="silverRing">Silver Ring</option>
+                            <option value="engagementRing">Engagement Ring</option>
+                            <option value="cocktailRing">Cocktail Ring</option>
+                            </optgroup>
+
+                            <optgroup label="Wrist Jewellery">
+                            <option value="goldBangles">Gold Bangles</option>
+                            <option value="silverBangles">Silver Bangles</option>
+                            <option value="charmBracelet">Charm Bracelet</option>
+                            <option value="kadaBracelet">Kada Bracelet</option>
+                            </optgroup>
+
+                            <optgroup label="Other Jewellery">
+                            <option value="nosePin">Nose Pin</option>
+                            <option value="noseRing">Nose Ring</option>
                             <option value="anklet">Anklet</option>
-                            <option value="pendant">Pendant</option>
-                            <option value="nose-pin">Nose Pin</option>
+                            <option value="toeRing">Toe Ring</option>
+                            <option value="woodenPendant">Wooden Pendant</option>
+                            </optgroup>
                         </select>
                     </div>
 
                     <div class="form-item">
                         <label for="jewellery-craft">Craft Style of Jewellery</label>
                         <select id="jewellery-craft" name="jewelleryCraft" required>
-                            <option value="">Select category</option>
+                            <option value="">SelectCategory</option>
+
+                            <optgroup label="Traditional Styles">
                             <option value="meenakari">Meenakari</option>
                             <option value="kundan">Kundan</option>
-                            <option value="oxidised">Oxidised</option>
-                            <option value="filigree">Filigree</option>
                             <option value="jadau">Jadau</option>
-                            <option value="tribal">Tribal</option>
+                            <option value="templeJewellery">Temple Jewellery</option>
+                            <option value="polki">Polki</option>
+                            </optgroup>
+
+                            <optgroup label="Artisan & Craft Styles">
+                            <option value="filigree">Filigree</option>
                             <option value="handcrafted">Handcrafted</option>
-                            <option value="stone-work">Stone Work</option>
+                            <option value="tribal">Tribal</option>
+                            <option value="dhokra">Dhokra</option>
+                            <option value="custom">Custom</option>
+                            </optgroup>
+
+                            <optgroup label="Finish & Surface Work">
+                            <option value="oxidised">Oxidised</option>
+                            <option value="stoneWork">Stone Work</option>
+                            <option value="pearlWork">Pearl Work</option>
+                            <option value="plain">Plain</option>
+                            </optgroup>
                         </select>
                     </div>
 
@@ -1162,8 +1223,8 @@
 
                 <div class="input-row">
                     <div class="form-item">
-                        <label for="jew-weight">Weight of Jewellary</label>
-                        <input type="text" id="jew-weight" name="jewelleryWeight" placeholder="Enter Weight of jewellary (grams)" required>
+                        <label for="jew-weight">Weight of Jewellary (optional)</label>
+                        <input type="text" id="jew-weight" name="jewelleryWeight" placeholder="Enter Weight of jewellary (grams)">
                     </div>
                 </div>
 
