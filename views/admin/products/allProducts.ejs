@@ -21,12 +21,22 @@
                         </div>
                         <div class="pg-grp"><span class="pg-grp-bt" id="prev"><i data-lucide="step-back" class="icon" style="position: relative; top: 5px; color: var(--clr-txt-body);"></i></span><span></span><span class="page-num">1</span><span class="pg-grp-bt" id="next"><i data-lucide="step-forward" class="icon"style="position: relative; top: 5px; color: var(--clr-txt-body);left:5px"></i></span></div>
                         <div class="item-count"></div>
-                        <button class="compact"id="barcode-print"><i data-lucide="printer" class="add-icon" style="margin: auto;"></i></button>
+                        <button class="compact"id="barcode-print"><i data-lucide="printer-check" class="add-icon" style="margin: auto;"></i></button>
+                        <button class="compact"id="barcode-reset" style="background-color: rgba(165, 3, 3, 0.82);"><i data-lucide="printer-x" class="add-icon" style="margin: auto;"></i></button>
                         <button class="compact"id="barcode-print"><i data-lucide="archive" class="add-icon" style="margin: auto;"></i></button>
-                         <button class="compact"><i data-lucide="grid-3x3" class="add-icon" style="margin: auto;"></i></button>
+                        <button class="compact"><i data-lucide="grid-3x3" class="add-icon" style="margin: auto;"></i></button>
 
 
                         <button class="compact"><a href="/admin/products/add" class="add-anchor"><i data-lucide="file-plus-corner" class="add-icon" style="position: relative; left: 4px;"></i></a></button>
+                </div>
+                <div class="confirm-box">
+                    <div class="conf-head"><i data-lucide="circle-alert" class="icon" style="width: 20px; height: 20px;"></i>Print Count Reset</div>
+                    <div class="conf-txt">This action will reset Print Count of all products in this page</div>
+                    <div class="button-group">
+                    <button class="confirm">Confirm</button>
+                    <button class="back">Close</button>
+                    </div>
+
                 </div>
                   <%if(data.length == 0){%>
                 <div class="empty-msg">
@@ -69,6 +79,7 @@
     <script>
         console.log("hello")
         window.dataset = <%- JSON.stringify(data) %>;
+        window.alertMessage = <%- JSON.stringify(alertMessage || null) %>;
     </script>
     <script>
         lucide.createIcons();

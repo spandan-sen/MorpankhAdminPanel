@@ -1,3 +1,6 @@
+if(window.alertMessage.length>0){
+  window.showAlert(window.alertMessage[0],window.alertMessage[1])
+}
 //Query Filter Code - 
 const itemCount = document.querySelector(".item-count")
 itemCount.textContent = `${dataset.length} Products`
@@ -56,9 +59,40 @@ prev.addEventListener("click",()=>{
   window.location.href = `/admin/products/allProducts?page=${page}&search=${search}`;
 
 })
+let modal_mode = ""
 //Barcode Print
 const barcodePrint = document.querySelector("#barcode-print")
 barcodePrint.addEventListener("click",()=>{
   const search = params.get("search") || "";
   window.location.href = `/admin/products/barcodePrint?page=${page}&search=${encodeURIComponent(search)}`
+})
+const barcodeReset = document.querySelector("#barcode-reset")
+barcodeReset.addEventListener("click",()=>{
+  modal_mode = "print-reset"
+  const dataform = document.querySelector(".product-grid")
+  const confirmBox = document.querySelector(".confirm-box")
+  confirmBox.style.display = "block"
+
+
+
+})
+document.querySelector(".back").addEventListener("click",()=>{
+    const dataform = document.querySelector(".product-grid")
+    dataform.classList.remove("blur")
+    const confirmBox = document.querySelector(".confirm-box")
+    confirmBox.style.display = "none"
+    const state = document.querySelector("#state")
+    state.value = prev_state
+
+
+})
+document.querySelector(".confirm").addEventListener("click",()=>{
+    if(modal_mode == "print-reset"){
+        const search = params.get("search") || "";
+      window.location.href = `/admin/products/barcodePrintReset?page=${page}&search=${encodeURIComponent(search)}`
+
+    }
+
+
+
 })

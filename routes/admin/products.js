@@ -130,7 +130,8 @@ router.get("/allProducts", async (req, res) => {
             display: "Products",
             data: products,
             currentPage: page,
-            userDP:req.session.adminDP
+            userDP:req.session.adminDP,
+            alertMessage:[]
         });
 
     } catch (err) {
@@ -166,6 +167,55 @@ router.get("/barcodePrint",async(req,res)=>{
             message: "Something went wrong."
         });
     }
+})
+router.get("/barcodePrintReset",async (req,res)=>{
+     try {
+    const search = req.query.search || "";
+    let page = parseInt(req.query.page) || 1;
+    const limit = 40;
+
+    if (page < 1) page = 1;
+
+    const skip = (page - 1) * limit;
+    const dbQuery = buildQuery(search);
+
+    // Get current page IDs
+    const pageProducts = await product_model
+      .find(dbQuery)
+      .skip(skip)
+      .limit(limit)
+      .select("_id");
+
+    const ids = pageProducts.map(p => p._id);
+
+    // Decrement safely
+    if (ids.length) {
+      await product_model.updateMany(
+        { _id: { $in: ids }, barcodePrintCount: { $gt: 0 } },
+        { $set: { barcodePrintCount: 0 } }
+      );
+    }
+
+    // Fetch updated products
+    const products = await product_model
+      .find(dbQuery)
+      .skip(skip)
+      .limit(limit)
+      .lean();
+
+    return res.render("admin/products/allProducts", {
+            display: "Products",
+            data: products,
+            currentPage: page,
+            userDP:req.session.adminDP,
+            alertMessage:["success","Barcode Print Count of Products Set to 0"]
+        });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+
 })
 router.get("/updatePrintCount",async (req,res)=>{
     const search = req.query.search || "";
