@@ -13,7 +13,7 @@ body,html{
     padding: var(--space-s) var(--space-m);
     align-items: flex-start;
     background-color: var(--clr-head);
-    min-width: 13%;
+    min-width: 15%;
     height: 100vh;
     border-right: 1px solid rgb(197, 196, 196);
     box-shadow: var(--shadow-lg);
@@ -21,14 +21,21 @@ body,html{
 }
 .sidebar-brand{
     font-family: var(--font-mainHead);
-    font-size: var(--space-xxl);
+    font-size: var(--space-xl);
     color: var(--clr-txt-inv);
-    margin-bottom: var(--space-xl);
+    margin-bottom: 0.5rem;
     padding-top: var(--space-s);
     text-shadow:  0 2px 4px rgba(0, 0, 0, 0.15);
     width: 100%;
     position: relative;
     bottom: 6px;
+    left: 5px;
+    scale: 1.07;
+    align-items: center;
+}
+.brand-name{
+    position: relative;
+    bottom: 12px;
 }
 .sidebar .icon{
     color: currentColor;
@@ -54,6 +61,12 @@ a .sidebar-items {
     padding:var(--space-s) 0.5rem;
     width: 100%;
     transition: 0.5s;
+    font-size: var(--space-m);
+}
+.logo{
+    width: 40px;
+    padding-right: var(--space-xxs);
+    height: 40px;
 }
 
 .icon{
@@ -95,7 +108,7 @@ a .sidebar-items {
     width: 45px;
     height: 45px;
     position: relative;
-    right: 220px;
+    right: 240px;
     top: 14px;
     box-shadow: var(--shadow-sm);
     border-radius: 23px;
@@ -138,9 +151,9 @@ a .sidebar-items {
 }
 
 .signOut{
-    margin-top:2.5rem;
+    margin-top:4.8rem;
     border-top: 1px solid var(--clr-border-medium);
-    padding-top: var(--space-m);
+    padding-top: var(--space-s);
     
 }
 .alert{

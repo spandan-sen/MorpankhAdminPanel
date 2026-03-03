@@ -19,9 +19,9 @@
 
     /*Fonts - */
     --font-mainHead:"Playfair Display";
-    --font-head:"Montserrat";
+    --font-head:"Plus Jakarta Sans";
     --font-body:"Inter";
-    --font-form:"Oswald";
+    --font-form:"Nunito";
     --font-invoice:"Roboto"
 
     /* Spacing */
@@ -41,7 +41,7 @@
     --space-5xl:3.5rem;
     --space-6xl:4rem;
     --space-7xl:5rem;
-    --sidebar-width:12.4rem;
+    --sidebar-width:14rem;
     --topbar-height:4.9rem;
 
     /*radius*/
