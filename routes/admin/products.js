@@ -23,7 +23,6 @@ router.get("/regenerate/:barcode", async (req, res) => {
       "Content-Type": "image/png",
       "Content-Disposition": `attachment; filename="barcode-${barcode}.png"`,
     });
-    console.dir("Barcode Regeneration Status : Successfull")
 
     return res.end(png);
 
@@ -144,6 +143,7 @@ router.get("/allProducts", async (req, res) => {
 router.get("/barcodePrint",async(req,res)=>{
      try {
         const search = req.query.search || "";
+        let query = req.originalUrl.split('?')[1] || ''
         let page = parseInt(req.query.page) || 1;
         const limit = 40;
 
@@ -158,10 +158,12 @@ router.get("/barcodePrint",async(req,res)=>{
             .skip(skip)
             .limit(limit)
             .lean(); // cleaner output
+        console.log(query)
+        req.session.barcodePrintQuery = query
 
         return res.render("barcode_print", {
             products,
-            queryString: req.originalUrl.split('?')[1] || ''
+            queryString: query
         });
 
     } catch (err) {
@@ -242,7 +244,7 @@ router.get("/updatePrintCount",async (req,res)=>{
         { _id: { $in: idArray } },
         { $inc: { barcodePrintCount: 1 } }
         );
-        return res.redirect(`/admin/products/allProducts?page=${page}&search=${search}`)
+        return res.redirect(`/admin/products/allProducts?${req.session.barcodePrintQuery}`)
 
 
 

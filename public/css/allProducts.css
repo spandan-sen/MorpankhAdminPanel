@@ -135,6 +135,7 @@ input:focus{
     display: flex;
     flex-direction: column;
     gap: var(--space-s);
+    position: relative;
     align-items: flex-start;
     text-align: start;
     padding-left:var(--space-xl);
@@ -269,6 +270,7 @@ input:focus{
     width: 30%;
     border-radius: 5px;
     display: none;
+    z-index: 2;
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--clr-border-light);
       position: fixed;              /* NOT relative */

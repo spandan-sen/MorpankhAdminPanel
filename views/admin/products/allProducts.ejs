@@ -43,8 +43,9 @@
                         <p><i data-lucide="circle-x" class="empty-icon"></i>No Existing Products Found</p>
                         </div>
                         <%}%>
+                        <%let prodNum = 1%>
                 <div class="product-grid">
-                         <% for(let i = data.length - 1; i >= 0; i--){ 
+                         <% for(let i = data.length - 1; i >= 0; i--){
                                 const x = data[i]%>
                                 <a href="/admin/products/edit/<%=x.id%>" class="product-grid-item">
                                         <img src="<%=x.images[0]%>" class="product_image">
@@ -66,7 +67,10 @@
 
                                                                         <%}%>
                                                         <div class="product-text-info-item" style=" font-family: monospace;color: var(--pill-blue-text);background-color:var(--pill-blue-bg);font-size: var(--space-sm);padding: var(--space-xs) var(--space-s);" id = "item-stock"></i><%=x.barcode%></div>
+                                                        
                                                 </div>
+                                                <div style="position: absolute; bottom: -12px; right: -30px; font-size: var(--space-s); background-color: rgba(137, 137, 137, 0.963); color: var(--clr-txt-inv); padding: 3px; width: 15px; text-align: center; border-radius: 10px; overflow: hidden;"><%=prodNum%></div>
+                                                <%prodNum++%> 
                                         </div>
                                 </a>
                          <% } %>

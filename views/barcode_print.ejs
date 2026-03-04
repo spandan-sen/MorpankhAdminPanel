@@ -15,6 +15,7 @@
             overflow: hidden;
             display: flex;
             align-items: center;
+            position: relative;
             border: 1px solid black;
             padding: 0.3mm 2mm;
             justify-content: center;
@@ -64,14 +65,16 @@
   const perPage = 40;
   for (let i = 0; i < products.length; i += perPage) {
 %>
-
+<%let prodNum = 1%>
   <div class="page">
     <% products.slice(i, i + perPage).reverse().forEach(product => { %>
       <%for(let i=0;i<product.stock;i++){%>
           <div class="barcode">
               <img src="/admin/products/regenerate/<%= product.barcode%>">
+              <div style="font-family: monospace; font-size: 10px;margin-left: 3px; position:absolute; right: 0; bottom: 0;"><%=prodNum%></div>
           </div>
         <%}%>
+        <%prodNum++%>
     <% }) %>
   </div>
 
