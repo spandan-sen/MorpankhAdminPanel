@@ -13,7 +13,7 @@ body,html{
     padding: var(--space-s) var(--space-m);
     align-items: flex-start;
     background-color: var(--clr-head);
-    min-width: 15%;
+    min-width: 14.4%;
     height: 100vh;
     border-right: 1px solid rgb(197, 196, 196);
     box-shadow: var(--shadow-lg);
@@ -23,7 +23,7 @@ body,html{
     font-family: var(--font-mainHead);
     font-size: var(--space-xl);
     color: var(--clr-txt-inv);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
     padding-top: var(--space-s);
     text-shadow:  0 2px 4px rgba(0, 0, 0, 0.15);
     width: 100%;
@@ -33,12 +33,14 @@ body,html{
     scale: 1.07;
     align-items: center;
 }
+
 .brand-name{
     position: relative;
     bottom: 12px;
 }
 .sidebar .icon{
     color: currentColor;
+    stroke-width: 2.2;
 }
 .sidebar-items:hover{
     transform: translateX(4px);
@@ -67,6 +69,7 @@ a .sidebar-items {
     width: 40px;
     padding-right: var(--space-xxs);
     height: 40px;
+    z-index: 3;
 }
 
 .icon{
