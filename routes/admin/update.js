@@ -1,6 +1,6 @@
 const express = require("express")
 const mongoose = require("mongoose")
-const {product_model,alert_model,dash_model,audit_model,tax_model} = require("../../config/database")
+const {product_model,alert_model,dash_model,audit_model} = require("../../config/database")
 const router = express.Router()
 
 router.post("/", async (req,res)=>{
@@ -12,7 +12,6 @@ router.post("/", async (req,res)=>{
 
         console.dir(`Updation Request [ Name : ${req.body.name}] Status : Accepted`)
         const category = req.body.category
-        const priceChange = req.query.priceChange
 
         if(!req.body.id){
             await session.abortTransaction()
@@ -117,78 +116,13 @@ router.post("/", async (req,res)=>{
                 "jewelleryWeight":req.body.jewelleryWeight
             }
         }
-        console.log(priceChange)
-        if(priceChange == "true"){
-            const taxset = await tax_model.find({}) 
-                    const tax_slab_shift = 2500
-                    function removeGSTFromProduct(reqBody){
-            
-                        const taxInfo = taxset.find(y => String(y.hsnCode) === String(reqBody.hsnCode))
-            
-                        if(!taxInfo){
-                            console.warn("Missing tax info for HSN", reqBody.hsnCode);
-                            return null;
-                        }
-                        console.log(taxInfo)
-            
-                        let rate = taxInfo  .gstRate1;
-            
-                        // SAME slab logic as gstCalc
-                        if(!(reqBody.category == "sarees" || 
-                            reqBody.category == "stoles" || 
-                            reqBody.category == "dupattas")){
-            
-                            if(Number(reqBody.price) > tax_slab_shift && taxInfo.gstRate2){
-                                rate = taxInfo.gstRate2;
-                            }
-                        }
-            
-                        const inclusive = Number(reqBody.price);
-            
-                        const base = inclusive / (1 + rate/100);
-                        const roundedBase = Number(base.toFixed(2));
-            
-                        const gstAmount = Number((inclusive - roundedBase).toFixed(2));
-            
-                        return {
-                            base_price: roundedBase,
-                            gst_rate: rate,
-                            extracted_gst: gstAmount
-                        };
-                    }
-                    gstResult = removeGSTFromProduct(req.body);
-                    const updateResult = await product_model.updateOne(
-                        {id:req.body.id},
-                        {$set:{
-                            name:req.body.name,
-                            price:Number(gstResult.base_price),
-                            mrp:req.body.price,
-                            state:req.body.state,
-                            description:req.body.description,
-                            material:req.body.material,
-                            stock:req.body.stock,
-                            attributes:attribute_object,
-                            images:[
-                                req.body.image1,
-                                req.body.image2,
-                                req.body.image3,
-                                req.body.image4,
-                                req.body.image5,
-                                req.body.image6
-                            ]
-                        }},
-                        { session }
-                    )
-                    if(updateResult.matchedCount === 0){
-                        throw new Error("Product not found")
-        }
-        }else{
-            const updateResult = await product_model.updateOne(
+
+        // MAIN PRODUCT UPDATE
+        const updateResult = await product_model.updateOne(
             {id:req.body.id},
             {$set:{
                 name:req.body.name,
-                price:req.body.price,
-                mrp:req.body.mrp,
+                mrp:req.body.price,
                 state:req.body.state,
                 description:req.body.description,
                 material:req.body.material,
@@ -205,12 +139,10 @@ router.post("/", async (req,res)=>{
             }},
             { session }
         )
-                if(updateResult.matchedCount === 0){
+
+        if(updateResult.matchedCount === 0){
             throw new Error("Product not found")
         }
-        }
-
-    
         await audit_model.insertOne({
             actionUser:req.session.admin,
             actionType:"Product Updation",

@@ -51,7 +51,7 @@
                                         <img src="<%=x.images[0]%>" class="product_image">
                                         <div class="product-text-info">
                                                 <div class="product-text-info-item" id="item-name" style="background-color: white;"><span class="txt-head"><%=x.name%></span></div>
-                                                <div class="product-text-info-item" id="item-price" style="font-size: var(--space-xxl); background-color: white; color:var(--clr-txt-head); margin-top: -10px;">₹ <%=x.price%></div>
+                                                <div class="product-text-info-item" id="item-price" style="font-size: var(--space-xxl); background-color: white; color:var(--clr-txt-head); margin-top: -10px;">₹ <%=x.mrp%></div>
                                                 <div class="info-row">
                                                         <%if(x.stock != 0){%>
                                                                 <div class="product-text-info-item" style="color: var(--pill-green-text);;background-color: var(--pill-green-bg); font-size: var(--space-ml);padding: var(--space-xs) var(--space-s);" id = "item-stock"></i>In Stock <span class="stock-num" style="background-color: var(--clr-bg-website); padding: var(--space-xs);border-radius: 20px; height: fit-content;font-size: var(--space-s); position: relative; bottom: 3px;"><%=x.stock%></span></div>
