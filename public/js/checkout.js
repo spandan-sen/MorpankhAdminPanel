@@ -87,7 +87,7 @@ add_box.addEventListener("input", () => {
 
             // Attach metadata to DOM node
             item.dataset.barcode = product.barcode;
-            item.dataset.price = product.price;
+            item.dataset.price = product.mrp;
             item.dataset.category_generated = false;
 
             item.innerHTML = `
@@ -96,7 +96,7 @@ add_box.addEventListener("input", () => {
 
                     <div class="item-info">
                         <div class="item-info-txt" style="font-family:var(--font-body); font-size : var(--space-xl);">
-                            ₹ ${product.price}
+                            ₹ ${product.mrp}
                         </div>
 
                         <div class="item-info-txt">${product.name}</div>
@@ -138,7 +138,8 @@ add_box.addEventListener("input", () => {
                 material : product.material,
                 category : product.category,
                 hsnCode  : product.hsnCode,
-                price    : product.price,
+                price    : product.mrp,
+                attributes : product.attributes,
                 quantity : 0,
                 gst_rate : 0,
                 gst_amount : 0,
@@ -452,6 +453,7 @@ function renderChanges() {
         order_disection.innerHTML += `
             <div class="disection-item">
                 <span>${item.name}</span>
+                <span style = "font-size:"var(--space-s)"">${item.gst_rate}%</span>
                 <span>₹${item.line_total}</span>
             </div>
         `;
@@ -575,13 +577,15 @@ function recalculateAndRender() {
     gstCalc()
     renderChanges();
 }
-
 function gstCalc(){
     full_order_information.gst.total = 0;
     full_order_information.final_total = 0;
+    full_order_information.taxable_total = 0;
     full_order_information.final_total_words = ""
 
     for(let x of full_order_information.products_info){
+        console.log(x)
+
         const taxInfo = taxset.find(y => y.hsnCode == x.hsnCode);
         if(!taxInfo){
             console.warn("Missing tax info for HSN", x.hsnCode);
@@ -590,24 +594,57 @@ function gstCalc(){
 
         let rate = taxInfo.gstRate1;
 
-        if(!(x.category == "sarees" || x.category == "stoles" || x.category == "dupattas")){
-            if(x.discounted_line_total > tax_slab_shift && taxInfo.gstRate2){
-                rate = taxInfo.gstRate2;
-            }
+        // ----- FORCE 5% FOR SAREES -----
+        if(x.category === "sarees"){
+            rate = 5;
         }
 
-            const taxed_total = (x.discounted_line_total * rate) / 100;
-        x.gst_rate = rate;
-        x.gst_amount = taxed_total;
-            x.discounted_taxed_line_total = x.discounted_line_total + taxed_total;
-            x.cgst = x.sgst = x.gst_rate / 2;
+        // ----- FORCE 5% FOR UNSTITCHED BLOUSE -----
+        else if(
+            x.category === "blouse" &&
+            x.attributes &&
+            x.attributes?.blouseType === "unstitched"
+        ){
+            rate = 5;
+        }
 
-            full_order_information.gst.total += taxed_total;
-            full_order_information.final_total += x.discounted_taxed_line_total;
-        numToWord()
-        const taxGroupsBase = buildTaxGroups(full_order_information.products_info);
-        full_order_information.tax_groups = applyGSTToGroups(taxGroupsBase);
+        // ----- NORMAL SLAB LOGIC -----
+        else{
+            if(x.discounted_line_total <= 2600){
+                rate = 5;
+            }
+            else if(x.discounted_line_total >= 3000){
+                rate = 18;
+            }
+
+        }
+
+        // ---------- GST EXTRACTION ----------
+        const base_price = x.discounted_line_total / (1 + rate/100);
+        x.taxable_value = base_price;
+        const gst_amount = x.discounted_line_total - base_price;
+
+        x.gst_rate = rate;
+        x.gst_amount = gst_amount;
+
+        // ---------- FINAL LINE TOTAL ----------
+        x.discounted_taxed_line_total = x.discounted_line_total;
+
+        // ---------- TAX SPLIT ----------
+        x.cgst = gst_amount / 2;
+        x.sgst = gst_amount / 2;
+        x.igst = gst_amount;
+
+        // ---------- ORDER TOTALS ----------
+        full_order_information.gst.total += gst_amount;
+        full_order_information.final_total += x.discounted_line_total;
+        full_order_information.taxable_total += base_price;
     }
+
+    numToWord()
+
+    const taxGroupsBase = buildTaxGroups(full_order_information.products_info);
+    full_order_information.tax_groups = applyGSTToGroups(taxGroupsBase);
 }
 const order_summary = document.querySelector("#order-summary")
 order_summary.addEventListener("click",()=>{
@@ -799,7 +836,7 @@ function buildTaxGroups(products_info) {
       };
     }
 
-    groups[key].taxable_value += item.discounted_line_total;
+    groups[key].taxable_value += item.taxable_value;
   }
 
   return Object.values(groups);

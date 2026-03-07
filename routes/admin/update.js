@@ -122,7 +122,7 @@ router.post("/", async (req,res)=>{
             {id:req.body.id},
             {$set:{
                 name:req.body.name,
-                mrp:req.body.price,
+                mrp:req.body.mrp,
                 state:req.body.state,
                 description:req.body.description,
                 material:req.body.material,
