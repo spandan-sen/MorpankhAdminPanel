@@ -221,8 +221,8 @@ router.post("/data", async (req,res)=>{
         session.endSession()
 
         req.session.confirmation = `Name : ${req.body.name}`
-
-       res.redirect("/admin/products/allProducts?page=4&search=all")
+        console.log(req.session.pageNum)
+       res.redirect(`/admin/products/allProducts?page=${req.session.pageNum}&search=all`)
 
     }catch(err){
 

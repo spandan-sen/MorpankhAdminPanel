@@ -33,7 +33,7 @@ router.get("/:id", async (req,res)=>{
             await session.commitTransaction()
             session.endSession()
 
-            return res.redirect("/admin/products/allProducts?page=1&&search=all")
+            return res.redirect(`/admin/products/allProducts?page=${req.session.pageNum}&search=all`)
 
         }else{
             return res.redirect(`/admin/products/edit/${id}`)

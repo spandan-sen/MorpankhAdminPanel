@@ -24,6 +24,15 @@ categories.forEach(section => {
 
 category.addEventListener("change",()=>{
     console.log(category.value)
+        categories.forEach(section => {
+        if(section) {
+            section.style.display = "none"
+            section.querySelectorAll("input , select, textarea")
+            .forEach(el=>{
+                el.disabled = true
+            })
+        }
+    })
     
 
     //readymade
