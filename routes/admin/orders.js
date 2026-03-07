@@ -21,12 +21,20 @@ router.post("/updateStatus", async (req,res)=>{
         }
 
         console.log("Payment Status Incoming - ",update.paymentStatus)
+        const now = new Date(Date.now());
+
+        const day = String(now.getDate()).padStart(2, '0');
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const year = now.getFullYear();
+
+        const formatted = `${day}/${month}/${year}`;
 
         const orderResult = await order_model.updateOne(
             {orderId:update.orderID},
             {$set:{
                 orderStatus:update.orderStatus,
-                "paymentInfo.paymentStatus":update.paymentStatus
+                "paymentInfo.paymentStatus":update.paymentStatus,
+                paymentUpdateDate:formatted
             }},
             { session }
         )

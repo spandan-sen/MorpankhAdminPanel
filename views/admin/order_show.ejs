@@ -132,6 +132,22 @@
                     <td class="cst-summary-head">Payment Mode</td>
                     <td class="cst-summary-item"><%=orderData.paymentInfo.paymentMode%></td>
                 </tr>
+                <tr>
+                    <%
+                    const now = new Date(orderData.date);
+                    const day = String(now.getDate()).padStart(2, '0');
+                    const month = String(now.getMonth() + 1).padStart(2, '0');
+                    const year = now.getFullYear();
+
+                    const formatted = `${day}/${month}/${year}`;
+                    %>
+                    <td class="cst-summary-head">Order Date</td>
+                    <td class="cst-summary-item"><%=formatted%></td>
+                </tr>
+                <tr>
+                    <td class="cst-summary-head">Payment Status Update</td>
+                    <td class="cst-summary-item"><%=orderData.paymentUpdateDate%></td>
+                </tr>
                 <%if(orderData.paymentInfo.paymentStatus == "semiPaid"){%>
                 <tr>
                     <td class="cst-summary-head">Semi Paid Amt</td>

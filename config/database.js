@@ -116,7 +116,13 @@ const orderSchema = new mongoose.Schema({
     type: String, // "IN_STORE" | "Deliverable"
     required: true
   },
+  paymentUpdateDate:{
+    type:String
 
+  },
+  statusUpdateDate:{
+    type:String
+  },
   paymentInfo:{
     paymentStatus:String,
     paymentMode:String,
