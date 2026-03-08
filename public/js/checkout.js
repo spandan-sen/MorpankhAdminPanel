@@ -149,6 +149,7 @@ add_box.addEventListener("input", () => {
             bag_box.appendChild(item);
 
             /* ---------- Add Product to Order State ---------- */
+            
 
             full_order_information.products_info.push({
                 barcode  : product.barcode,
@@ -354,7 +355,7 @@ function renderChanges() {
     document.querySelector("#gst-total").textContent = 
         ` + ₹ ${ roundTo2(full_order_information.gst.total)} `
     document.querySelector("#final_total").textContent = 
-        `₹ ${ roundTo2(full_order_information.final_total)}`
+        `₹ ${ Math.round(full_order_information.final_total)}`  
 
     /* ---------- Address Box Handling ---------- */
 
@@ -615,6 +616,10 @@ function gstCalc(){
         // ----- FORCE 5% FOR SAREES -----
         if(x.category === "sarees"){
             rate = 5;
+        }
+        //-----FORCE 3% FOR JEWELLARY-----
+        else if(x.category == "jewellery"){
+            rate = 3;
         }
 
         // ----- FORCE 5% FOR UNSTITCHED BLOUSE -----
