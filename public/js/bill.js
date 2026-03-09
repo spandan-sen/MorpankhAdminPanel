@@ -9,6 +9,17 @@ generate.addEventListener("click",()=>{
      async function generateInvoice(){
         const res = await fetch(`/admin/bill/generate-invoice/${window.orderID}`);
         const blob = await res.blob();   // ⬅️ waits till Puppeteer finishes
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `invoice-${window.orderID}.pdf`;
+
+            document.body.appendChild(a);
+            a.click();
+
+            a.remove();
+            window.URL.revokeObjectURL(url);
+
         return  window.showAlert("success", "Invoice Generated Successfully");
 
      }

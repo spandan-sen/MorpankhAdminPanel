@@ -316,18 +316,31 @@ document.querySelector(".order-details")
 
 function getFinancialYear(date = new Date()) {
     const y = date.getFullYear();
-    return date.getMonth() >= 3
-        ? `${String(y).slice(-2)}-${String(y + 1).slice(-2)}`
-        : `${String(y - 1).slice(-2)}-${String(y).slice(-2)}`;
+
+    if (date.getMonth() >= 3) {
+        return {
+            start: String(y).slice(-2),
+            end: String(y + 1).slice(-2)
+        };
+    } else {
+        return {
+            start: String(y - 1).slice(-2),
+            end: String(y).slice(-2)
+        };
+    }
 }
 
-full_order_information.invoice_number =
+const fy = getFinancialYear();
+
+const nextInvoiceNumber =
     invoice_data.length === 0
-    ? `INV/${getFinancialYear()}/00001`
-    : `INV/${getFinancialYear()}/000${invoice_data[0].lastInvoiceNumber + 1}`;
-full_order_information.nextInvoiceNumber = invoice_data[0].lastInvoiceNumber + 2
+        ? 1
+        : invoice_data[0].lastInvoiceNumber + 1;
 
+full_order_information.invoice_number =
+    `MPD/${String(nextInvoiceNumber).padStart(4, "0")}/${fy.start}/${fy.end}`;
 
+full_order_information.nextInvoiceNumber = nextInvoiceNumber + 1;
 
 //Delivery Event Listner - 
 const orderType = document.querySelector("#orderType")
