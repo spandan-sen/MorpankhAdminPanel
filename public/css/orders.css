@@ -17,7 +17,7 @@ body::-webkit-scrollbar {
 }
 .search-group{
     display: flex;
-    max-width: 55%;
+    max-width: 80%;
     padding: var(--space-xs);
     align-items: center;
     gap: var(--space-s);
@@ -32,12 +32,12 @@ label{
     margin-right: var(--space-xs);
 }
 #summary{
-    padding: var(--space-xs);
+    padding: var(--space-xs) var(--space-s);
     cursor: pointer;
     background-color: var(--clr-action);
     color: var(--clr-txt-inv);
     border: 1px solid var(--clr-border-medium);
-    border-radius: 5px;
+    border-radius: 10px;
     transition: 0.5s;
 
 }
@@ -46,8 +46,20 @@ label{
 }
 .search-box{    
     border-radius: 5px;
-    width: 80%; 
+    width: 83%; 
 
+
+}
+.item-count{
+    padding: var(--space-xs);
+    text-align: center;
+    align-items: center;
+    height: fit-content;
+    color: var(--clr-txt-muted);
+    border-radius: 5px;
+    width: 30%;
+    background-color: var(--clr-bg-subcard);
+    font-family: var(--font-head);
 }
 input{
     padding: var(--space-s);

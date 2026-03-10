@@ -1,3 +1,7 @@
+//Query Filter Code - 
+const itemCount = document.querySelector(".item-count")
+itemCount.textContent = `${(window.dataset).length} Orders`
+
 
 const paymentStatus = document.querySelectorAll("#payment-status")
 .forEach(el=>{

@@ -20,6 +20,7 @@
                                 <input type="text" id="searchBox" placeholder="Enter Search Query">
                         </div>
                         <div class="pg-grp"><span class="pg-grp-bt" id="prev"><i data-lucide="step-back" class="icon"></i></span><span class="page-num">1</span><span class="pg-grp-bt" id="next"><i data-lucide="step-forward" class="icon"></i></span></div>
+                        <div class="item-count"></div>
                         <i data-lucide="notebook-text" id="summary"></i>  
        
 
@@ -76,6 +77,9 @@
         </div>
         <script>
                 lucide.createIcons();
+        </script>
+        <script>
+                window.dataset = <%- JSON.stringify(data) %>;
         </script>
         <script src="/js/orders.js"></script>
         
