@@ -96,25 +96,6 @@ This is a production system built for a specific business workflow.
 Not designed as a reusable template.
 Not intended for public deployment without modification.
 
-## Website Screenshots 
-<img width="1919" height="895" alt="image" src="https://github.com/user-attachments/assets/6b569c13-9e0a-44e9-a2ab-867b3199e614" />
-
----
-
-<img width="1918" height="894" alt="image" src="https://github.com/user-attachments/assets/f2475c69-2242-41b4-9d90-bc4e3a34a0b7" />
-
----
-
-<img width="1917" height="895" alt="image" src="https://github.com/user-attachments/assets/a38a9377-458c-4c54-af3f-9bb1d098ac05" />
-
----
-
-<img width="1919" height="895" alt="image" src="https://github.com/user-attachments/assets/49903f4f-62d1-4927-ac4a-552d7f96feb6" />
-
----
-
-<img width="1919" height="896" alt="image" src="https://github.com/user-attachments/assets/e8e65cc5-cadf-4b05-a764-354d2220e04c" />
-
 
 
 
