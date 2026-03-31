@@ -38,7 +38,7 @@ body::-webkit-scrollbar {
 }
 .search-icon{
     position: relative;
-    top: 5px;
+    top: 5px
 }
 input{
     padding: var(--space-m);
