@@ -47,7 +47,7 @@ input{
     border: none;
     background-color: var(--clr-bg-subcard);
     width: 80%;
-    font-size: var(--space-m);
+    font-size: var(--space-m)
     
 }
 input:focus{
